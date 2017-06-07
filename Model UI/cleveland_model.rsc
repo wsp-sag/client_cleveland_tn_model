@@ -12,9 +12,27 @@ DBox "Cleveland Model"
     init do
         Shared  project_dbox, scenario_dbox, ui_file, scenario_file, scen_data_dir, project_name, prj_version, Args, loop, fiterations, ScenArr, ScenSel
 
-// open up the .ini file in the TransCAD directory that lists where the model directory is and where the
-// TransCAD directory is
-        {mod_file, ui_file, scenario_file, scen_data_dir} = RunMacro("TCP Get Project Files", "cleveland_config.ini", &errMsg)
+        // Use the UI location to determine model location
+        // Create the ini file if it doesn't exist (first setup only)
+        uiDBD = GetInterface()
+        a_path = SplitPath(uiDBD)
+        uiDir = a_path[1] + a_path[2]
+        iniFile = uiDir + "cleveland.ini"
+        if GetFileInfo(iniFile) = null then do
+            file = OpenFile(iniFile,"w")
+            WriteLine(file,"[Model Table]")
+            WriteLine(file,uiDir + "model_table.bin")
+            WriteLine(file,"[UI File]")
+            WriteLine(file,uiDBD)
+            WriteLine(file,"[Scenario File]")
+            WriteLine(file,uiDir + "scen_file.arr")
+            WriteLine(file,"[Data Directory]")
+            WriteLine(file,uiDir + "..\\Base_Year")
+            CloseFile(file)
+        end
+
+        // open up the .ini file
+        {mod_file, ui_file, scenario_file, scen_data_dir} = RunMacro("TCP Get Project Files", iniFile, &errMsg)
         if mod_file = null then do ShowMessage(errMsg) return() end
         modinfo = GetFileInfo(mod_file)
         sceninfo = GetFileInfo(scenario_file)
@@ -60,8 +78,8 @@ DBox "Cleveland Model"
     close do Runmacro("closing") endItem
 
 // load the graphic
-    button  8,0
-    icons: "bmp\\cleveland.bmp", "bmp\\cleveland.bmp"
+    button  .5,0
+    icons: uiDir + "bmp\\cleveland.bmp", uiDir + "bmp\\cleveland.bmp"
 
     frame 0.5, 6, 41, 7.4 prompt: "Scenarios"
 
@@ -114,7 +132,7 @@ DBox "Cleveland Model"
     button "tr5" After, Same, 20, 2 prompt:StageName[5]  do cur_stage = 5  Runmacro("run stages") enditem
 
 // commercial vehicles button
-    button 1, After icons: "bmp\\truck41.bmp", "bmp\\truck41.bmp" do cur_stage = 6  Runmacro("set steps") enditem
+    button 1, After icons: uiDir + "bmp\\truck41.bmp", "bmp\\truck41.bmp" do cur_stage = 6  Runmacro("set steps") enditem
     button "tr6" After, Same, 20, 2 prompt:StageName[6]  do cur_stage = 6  Runmacro("run stages") enditem
 
 // external trips button
