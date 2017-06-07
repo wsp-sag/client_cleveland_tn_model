@@ -6,5 +6,6 @@
 *.5
 *.6
 *.dbd
-# Also ignore the ini file which is custom to each install
+# Also ignore the .ini and .arr files which are custom to each install
 *.ini
+*.arr
