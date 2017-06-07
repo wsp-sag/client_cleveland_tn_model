@@ -3,3 +3,5 @@
 .Rproj.user
 # Mac also adds thumbnail files. Ignore those.
 Thumbs.db
+# When the model runs, it creates report TXTs. Ignore them.
+*.txt
