@@ -3116,139 +3116,61 @@ Macro "Time of Day" (Args)
      Opts.Output.[Output Matrix].Label = "PA to OD"
      Opts.Output.[Output Matrix].[File Name] = Args.[OP2IX_TRIPS]
      ret_value = RunMacro("TCB Run Procedure", "PA2OD", Opts, &Ret)
-     if !ret_value then goto quit 	
-    
+     if !ret_value then goto quit
+
 	RunMacro("AddMatrices", Args.[OPIX_TRIPS] , Args.[OP2IX_TRIPS])
-	
 	//  Combine all the Time Period Tables for assignemnt
 	RunMacro("CreateZeroMatrix", {Args.[AMVEH_TRIPS], "Label",  "HBW AUTOPER (6-9)"},
 						{Args.[AMTOT_TRIPS], "AMTOT Trips", "AMTOT Trips"})
 	RunMacro("CreateZeroMatrix", {Args.[AMVEH_TRIPS], "Label",  "HBW AUTOPER (6-9)"},
 						{Args.[MDTOT_TRIPS], "MDTOT Trips", "MDTOT Trips"})
 	RunMacro("CreateZeroMatrix", {Args.[AMVEH_TRIPS], "Label",  "HBW AUTOPER (6-9)"},
-						{Args.[PMTOT_TRIPS], "PMTOT Trips", "PMTOT Trips"})	
+						{Args.[PMTOT_TRIPS], "PMTOT Trips", "PMTOT Trips"})
 	RunMacro("CreateZeroMatrix", {Args.[AMVEH_TRIPS], "Label",  "HBW AUTOPER (6-9)"},
 						{Args.[OPTOT_TRIPS], "OPTOT Trips", "OPTOT Trips"})
 
-	m1 = OpenMatrix(Args.[AMVEH_TRIPS],)
-	m2 = OpenMatrix(Args.[AMCV_TRIPS],)
-	m3 = OpenMatrix(Args.[AMEE_TRIPS],)
-	m4 = OpenMatrix(Args.[AMIX_TRIPS],)
-	
-	matrix_cores1 = GetMatrixCoreNames(m1)
-	matrix_cores2 = GetMatrixCoreNames(m2)
-	matrix_cores3 = GetMatrixCoreNames(m3)
-	matrix_cores4 = GetMatrixCoreNames(m4)
-	
-	mc11 = CreateMatrixCurrency(m1,matrix_cores1[1],,, )
-	mc12 = CreateMatrixCurrency(m1,matrix_cores1[2],,, )
-	mc13 = CreateMatrixCurrency(m1,matrix_cores1[3],,, )
-	mc14 = CreateMatrixCurrency(m1,matrix_cores1[4],,, )
-	mc15 = CreateMatrixCurrency(m1,matrix_cores1[5],,, )
-	
-	mc21 = CreateMatrixCurrency(m2,matrix_cores2[1],,, )
-	mc22 = CreateMatrixCurrency(m2,matrix_cores2[2],,, )
-	mc23 = CreateMatrixCurrency(m2,matrix_cores2[3],,, )
-	
-	mc31 = CreateMatrixCurrency(m3,matrix_cores3[1],,, )
-	
-	mc41 = CreateMatrixCurrency(m4, matrix_cores4[1],,, )
-    
-	new_mat = CombineMatrices({mc11, mc12, mc13, mc14, mc15, mc21, mc22, mc23, mc31, mc41}, {{"File Name", scen_data_dir + "\\interim\\temp.mtx"},
-     {"Label", "New Matrix"},
-     {"Operation", "Union"}})	
-	RunMacro("AddCollapsedMatrix", Args.[AMTOT_TRIPS], scen_data_dir + "\\interim\\temp.mtx")
-    
-	m1 = OpenMatrix(Args.[MDVEH_TRIPS],)
-	m2 = OpenMatrix(Args.[MDCV_TRIPS],)
-	m3 = OpenMatrix(Args.[MDEE_TRIPS],)
-	m4 = OpenMatrix(Args.[MDIX_TRIPS],)
-	
-	matrix_cores1 = GetMatrixCoreNames(m1)
-	matrix_cores2 = GetMatrixCoreNames(m2)
-	matrix_cores3 = GetMatrixCoreNames(m3)
-	matrix_cores4 = GetMatrixCoreNames(m4)
-	
-	mc11 = CreateMatrixCurrency(m1,matrix_cores1[1],,, )
-	mc12 = CreateMatrixCurrency(m1,matrix_cores1[2],,, )
-	mc13 = CreateMatrixCurrency(m1,matrix_cores1[3],,, )
-	mc14 = CreateMatrixCurrency(m1,matrix_cores1[4],,, )
-	mc15 = CreateMatrixCurrency(m1,matrix_cores1[5],,, )
-	
-	mc21 = CreateMatrixCurrency(m2,matrix_cores2[1],,, )
-	mc22 = CreateMatrixCurrency(m2,matrix_cores2[2],,, )
-	mc23 = CreateMatrixCurrency(m2,matrix_cores2[3],,, )
-	
-	mc31 = CreateMatrixCurrency(m3,matrix_cores3[1],,, )
-	
-	mc41 = CreateMatrixCurrency(m4, matrix_cores4[1],,, )
+  tempMtx = scen_data_dir + "\\interim\\temp.mtx"
 
-	new_mat = CombineMatrices({mc11, mc12, mc13, mc14, mc15, mc21, mc22, mc23, mc31, mc41}, {{"File Name", scen_data_dir + "\\interim\\temp.mtx"},
-     {"Label", "New Matrix"},
-     {"Operation", "Union"}})	
-	RunMacro("AddCollapsedMatrix", Args.[MDTOT_TRIPS], scen_data_dir + "\\interim\\temp.mtx")
-	
-	m1 = OpenMatrix(Args.[PMVEH_TRIPS],)
-	m2 = OpenMatrix(Args.[PMCV_TRIPS],)
-	m3 = OpenMatrix(Args.[PMEE_TRIPS],)
-	m4 = OpenMatrix(Args.[PMIX_TRIPS],)
-	
-	matrix_cores1 = GetMatrixCoreNames(m1)
-	matrix_cores2 = GetMatrixCoreNames(m2)
-	matrix_cores3 = GetMatrixCoreNames(m3)
-	matrix_cores4 = GetMatrixCoreNames(m4)
-	
-	mc11 = CreateMatrixCurrency(m1,matrix_cores1[1],,, )
-	mc12 = CreateMatrixCurrency(m1,matrix_cores1[2],,, )
-	mc13 = CreateMatrixCurrency(m1,matrix_cores1[3],,, )
-	mc14 = CreateMatrixCurrency(m1,matrix_cores1[4],,, )
-	mc15 = CreateMatrixCurrency(m1,matrix_cores1[5],,, )
-	
-	mc21 = CreateMatrixCurrency(m2,matrix_cores2[1],,, )
-	mc22 = CreateMatrixCurrency(m2,matrix_cores2[2],,, )
-	mc23 = CreateMatrixCurrency(m2,matrix_cores2[3],,, )
-	
-	mc31 = CreateMatrixCurrency(m3,matrix_cores3[1],,, )
-	
-	mc41 = CreateMatrixCurrency(m4, matrix_cores4[1],,, )
+  a_tod = {"AM", "MD", "PM", "OP"}
+    for t = 1 to a_tod.length do
+      tod = a_tod[t]
 
-	new_mat = CombineMatrices({mc11, mc12, mc13, mc14, mc15, mc21, mc22, mc23, mc31, mc41}, {{"File Name", scen_data_dir + "\\interim\\temp.mtx"},
-     {"Label", "New Matrix"},
-     {"Operation", "Union"}})	
-	RunMacro("AddCollapsedMatrix", Args.[PMTOT_TRIPS], scen_data_dir + "\\interim\\temp.mtx")
+      m1 = OpenMatrix(Args.(tod + "VEH_TRIPS"),)
+    	m2 = OpenMatrix(Args.(tod + "CV_TRIPS"),)
+    	m3 = OpenMatrix(Args.(tod + "EE_TRIPS"),)
+    	m4 = OpenMatrix(Args.(tod + "IX_TRIPS"),)
 
-	m1 = OpenMatrix(Args.[OPVEH_TRIPS],)
-	m2 = OpenMatrix(Args.[OPCV_TRIPS],)
-	m3 = OpenMatrix(Args.[OPEE_TRIPS],)
-	m4 = OpenMatrix(Args.[OPIX_TRIPS],)
-	
-	matrix_cores1 = GetMatrixCoreNames(m1)
-	matrix_cores2 = GetMatrixCoreNames(m2)
-	matrix_cores3 = GetMatrixCoreNames(m3)
-	matrix_cores4 = GetMatrixCoreNames(m4)
-	
-	mc11 = CreateMatrixCurrency(m1,matrix_cores1[1],,, )
-	mc12 = CreateMatrixCurrency(m1,matrix_cores1[2],,, )
-	mc13 = CreateMatrixCurrency(m1,matrix_cores1[3],,, )
-	mc14 = CreateMatrixCurrency(m1,matrix_cores1[4],,, )
-	mc15 = CreateMatrixCurrency(m1,matrix_cores1[5],,, )
-	
-	mc21 = CreateMatrixCurrency(m2,matrix_cores2[1],,, )
-	mc22 = CreateMatrixCurrency(m2,matrix_cores2[2],,, )
-	mc23 = CreateMatrixCurrency(m2,matrix_cores2[3],,, )
-	
-	mc31 = CreateMatrixCurrency(m3,matrix_cores3[1],,, )
-	
-	mc41 = CreateMatrixCurrency(m4, matrix_cores4[1],,, )
+      matrix_cores1 = GetMatrixCoreNames(m1)
+    	matrix_cores2 = GetMatrixCoreNames(m2)
+    	matrix_cores3 = GetMatrixCoreNames(m3)
+    	matrix_cores4 = GetMatrixCoreNames(m4)
 
-	new_mat = CombineMatrices({mc11, mc12, mc13, mc14, mc15, mc21, mc22, mc23, mc31, mc41}, {{"File Name", scen_data_dir + "\\interim\\temp.mtx"},
-     {"Label", "New Matrix"},
-     {"Operation", "Union"}})	
-	RunMacro("AddCollapsedMatrix", Args.[OPTOT_TRIPS], scen_data_dir + "\\interim\\temp.mtx")	
-		
-						
+      mc11 = CreateMatrixCurrency(m1,matrix_cores1[1],,, )
+    	mc12 = CreateMatrixCurrency(m1,matrix_cores1[2],,, )
+    	mc13 = CreateMatrixCurrency(m1,matrix_cores1[3],,, )
+    	mc14 = CreateMatrixCurrency(m1,matrix_cores1[4],,, )
+    	mc15 = CreateMatrixCurrency(m1,matrix_cores1[5],,, )
+
+    	mc21 = CreateMatrixCurrency(m2,matrix_cores2[1],,, )
+    	mc22 = CreateMatrixCurrency(m2,matrix_cores2[2],,, )
+    	mc23 = CreateMatrixCurrency(m2,matrix_cores2[3],,, )
+
+    	mc31 = CreateMatrixCurrency(m3,matrix_cores3[1],,, )
+
+    	mc41 = CreateMatrixCurrency(m4, matrix_cores4[1],,, )
+
+      // Combine everything including EE to get the dimension correct
+    	CombineMatrices({mc11, mc12, mc13, mc14, mc15, mc21, mc22, mc23, mc31, mc41}, {{"File Name", tempMtx},
+         {"Label", "New Matrix"},
+         {"Operation", "Union"}})
+    	RunMacro("AddCollapsedMatrix", Args.(tod + "TOT_TRIPS"), tempMtx)
+
+      RunMacro("close everything")
+      DeleteFile(tempMtx)
+    end
+
     quit:
-         Return(ret_value)		 	 
+         Return(ret_value)
 endMacro
 
 Macro "Traffic Assignment" (Args)
