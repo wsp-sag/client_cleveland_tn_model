@@ -1,0 +1,5 @@
+
+12
+"FACTYPE_CD",I,1,4,0,8,0,,"","1   Freeway|2   Multilane Hwy|3   Two-Lane Hwy|4   Urban Art I|5   Urban Art II|6   Urban Art III|7   Urban Art IV|8   Collector|9   Local Road|10 Diamond Ramp|11 Loop Ramp|12 CC",,"Blank",
+"TERRAIN_CD",I,5,4,0,8,0,,"","3: Rolling/Standard|4: Mountainous/Challening|5: Flat/Ideal",,"Blank",
+"SpeedAdj",I,9,4,0,8,0,,"","Adjustment applied to posted speed to derive free-flow speed",,"Blank",

@@ -1,0 +1,5 @@
+# Ignore all dcc files
+*.dcc
+.Rproj.user
+# Mac also adds thumbnail files. Ignore those.
+Thumbs.db

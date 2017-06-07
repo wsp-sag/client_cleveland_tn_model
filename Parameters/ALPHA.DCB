@@ -1,0 +1,5 @@
+
+30
+"Facility Type",C,1,24,0,24,0,,,"",,Blank,
+"FACTYPE_CD",I,25,4,0,8,0,,,"",,Blank,
+"Alpha",S,29,2,0,6,0,,,"",,Blank,

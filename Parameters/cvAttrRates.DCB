@@ -1,0 +1,9 @@
+
+40
+"CV Type",C,1,16,0,16,0,,,"",,Blank,
+"Industry EMP",F,17,4,0,10,4,,,"",,Blank,
+"Retail EMP",F,21,4,0,10,4,,,"",,Blank,
+"HwyRetail EMP",F,25,4,0,10,4,,,"",,Blank,
+"Service EMP",F,29,4,0,10,4,,,"",,Blank,
+"Office EMP",F,33,4,0,10,4,,,"",,Blank,
+"Households",F,37,4,0,10,4,,,"",,Blank,

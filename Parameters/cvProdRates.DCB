@@ -1,0 +1,9 @@
+
+40
+"CV Type",C,1,16,0,16,0,,"","",,"Blank",
+"Industry",F,17,4,0,10,2,,"","per cv",,"Blank",
+"Retail",F,21,4,0,10,2,,"","per cv",,"Blank",
+"HwyRetail",F,25,4,0,10,2,,"","per cv",,"Blank",
+"Service",F,29,4,0,10,2,,"","per cv",,"Blank",
+"Office",F,33,4,0,10,2,,"","per cv",,"Blank",
+"Households",F,37,4,0,10,3,,"","per  household",,"Blank",

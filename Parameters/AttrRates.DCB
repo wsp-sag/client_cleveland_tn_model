@@ -1,0 +1,11 @@
+
+48
+"purpose",C,1,16,0,16,0,,"","",,"Blank",
+"TOTEMP",F,17,4,0,10,2,,"","",,"Blank",
+"INDUSTRY",F,21,4,0,10,2,,"","",,"Blank",
+"RETAIL",F,25,4,0,10,2,,"","",,"Blank",
+"HWYRETAIL",F,29,4,0,10,2,,"","",,"Blank",
+"SERVICE",F,33,4,0,10,2,,"","",,"Blank",
+"OFFICE",F,37,4,0,10,2,,"","",,"Blank",
+"HOUSEHOLDS",F,41,4,0,10,2,,"","",,"Blank",
+"STUDENTS",F,45,4,0,10,2,,"","",,"Blank",

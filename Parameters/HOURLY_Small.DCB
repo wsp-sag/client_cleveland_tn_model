@@ -1,0 +1,16 @@
+
+108
+"Hour",I,1,4,0,11,0,,,"",,Blank,
+"dep_hbw",R,5,8,0,15,4,,,"",,Blank,
+"ret_hbw",R,13,8,0,15,4,,,"",,Blank,
+"dep_hbsch",R,21,8,0,15,4,,,"",,Blank,
+"ret_hbsch",R,29,8,0,15,4,,,"",,Blank,
+"dep_hbo",R,37,8,0,15,4,,,"",,Blank,
+"ret_hbo",R,45,8,0,15,4,,,"",,Blank,
+"dep_nhbw",R,53,8,0,15,4,,,"",,Blank,
+"ret_nhbw",R,61,8,0,15,4,,,"",,Blank,
+"dep_nhbo",R,69,8,0,15,4,,,"",,Blank,
+"ret_nhbo",R,77,8,0,15,4,,,"",,Blank,
+"dep_all",R,85,8,0,15,4,,,"",,Blank,
+"ret_all",R,93,8,0,15,4,,,"",,Blank,
+"% FLOW ALL",R,101,8,0,15,4,,,"",,Blank,
