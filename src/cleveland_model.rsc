@@ -27,7 +27,7 @@ DBox "Cleveland Model"
             WriteLine(file,"[Scenario File]")
             WriteLine(file,uiDir + "scen_file.arr")
             WriteLine(file,"[Data Directory]")
-            WriteLine(file,uiDir + "..\\Base_Year")
+            WriteLine(file,uiDir + "..\\base_year")
             CloseFile(file)
         end
 
