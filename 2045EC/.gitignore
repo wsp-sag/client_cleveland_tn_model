@@ -1,5 +1,4 @@
 # Ignore all files except the gitignore file
 *
 !.gitignore
-/*/
-!/Input
+!Input/*
