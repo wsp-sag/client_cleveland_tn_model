@@ -1,6 +1,6 @@
 Cleveland 2000 Network
 369
-"ID",I,1,4,0,4,0,,"","",,"Sum",
+"ID",I,1,4,0,10,0,,"","",,"Sum",
 "Posted Speed",R,5,8,0,10,2,,"","",,"Copy",
 "Facility Type",C,13,24,0,24,0,,"","",,"Copy",
 "FACTYPE_CD",I,37,4,0,8,0,,"","",,"Copy",
