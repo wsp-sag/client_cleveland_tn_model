@@ -1,7 +1,7 @@
 
 Macro "Cleveland Model Version"
-    project_version_number = 2
-    required_tc_version = 384
+    project_version_number = 3
+    required_tc_version = 22360
     return({project_version_number, required_tc_version})
 endMacro
 
@@ -81,10 +81,10 @@ DBox "Cleveland Model"
     button  .5,0
     icons: uiDir + "bmp\\cleveland.bmp", uiDir + "bmp\\cleveland.bmp"
 
-    frame 0.5, 6, 41, 7.4 prompt: "Scenarios"
+    frame 0.5, 3.5, 41, 7.9 prompt: "Scenarios"
 
 	// show a list of scenarios
-    Scroll List 1.5, 7.0, 38.5, 3.5 multiple list: ScenNames variable: ScenSel do
+    Scroll List 1.5, 4.5, 38.5, 4.0 multiple list: ScenNames variable: ScenSel do
         RunMacro("TCP Save Scenario File", ScenArr, ScenSel, scenario_file)
         RunMacro("TCP Update Scenarios Show Array", ScenArr, ScenSel, stages)
     endItem
@@ -94,12 +94,12 @@ DBox "Cleveland Model"
     // checkbox "all steps" Same, 12.1, 15 variable: do_all_steps prompt: "Run all steps" do
         // RunMacro("TCP Run All Steps", &do_all_steps, &StepFlag)
     // endItem
-    Radio List 1.5,10.2,19,3 Variable: modelMode
-    Radio Button 2,10.9 Prompt: "Stop After Stage" do
+    Radio List 1.5,8.2,19,3 Variable: modelMode
+    Radio Button 2,8.9 Prompt: "Stop After Stage" do
         single_stage = 1
         do_all_steps = 0
     enditem
-    Radio Button 2,12 Prompt: "Run All Steps" do
+    Radio Button 2,10 Prompt: "Run All Steps" do
         single_stage = 0
         do_all_steps = 1
         RunMacro("TCP Run All Steps", &do_all_steps, &StepFlag)
@@ -107,48 +107,48 @@ DBox "Cleveland Model"
 
 
 // setup button
-    button 25, 11.3, 13, 1.5 prompt: "Setup" do
+    button 25, 9.3, 13, 1.5 prompt: "Setup" do
         RunDbox("TCP Scenario dBox", scenario_file, scen_data_dir,, Args)
     enditem
 
 //  Prepare Network button
-    button 1,    17 icons: "bmp\\plannetwork.bmp", "bmp\\plannetwork.bmp" do cur_stage = 1  Runmacro("set steps") enditem
-    button "tr1" After, Same, 20, 2 prompt:StageName[1]  do cur_stage = 1  Runmacro("run stages") enditem
+    button 1,    12.3 icons: "bmp\\plannetwork.bmp", "bmp\\plannetwork.bmp" do cur_stage = 1  Runmacro("set steps") enditem
+    button "tr1" After, Same, 20, 1.5 prompt:StageName[1]  do cur_stage = 1  Runmacro("run stages") enditem
 
 // create network button "bmp\\plantripgen.bmp"
     button 1, After icons: "bmp\\planskim.bmp", "bmp\\planskim.bmp" do cur_stage = 2  Runmacro("set steps") enditem
-    button "tr2" After, Same, 20, 2 prompt:StageName[2]  do cur_stage = 2  Runmacro("run stages") enditem
+    button "tr2" After, Same, 20, 1.5 prompt:StageName[2]  do cur_stage = 2  Runmacro("run stages") enditem
 
 // Trip generation button "bmp\\plantripdist.bmp"
     button 1, After icons: "bmp\\plantripgen.bmp", "bmp\\plantripgen.bmp" do cur_stage = 3  Runmacro("set steps") enditem
-    button "tr3" After, Same, 20, 2 prompt:StageName[3]  do cur_stage = 3  Runmacro("run stages") enditem
+    button "tr3" After, Same, 20, 1.5 prompt:StageName[3]  do cur_stage = 3  Runmacro("run stages") enditem
 
 //  trip distribution button"bmp\\planmodesplit.bmp"
     button 1, After icons: "bmp\\planmatrix.bmp", "bmp\\planmatrix.bmp" do cur_stage = 4  Runmacro("set steps") enditem
-    button "tr4" After, Same, 20, 2 prompt:StageName[4]  do cur_stage = 4  Runmacro("run stages") enditem
+    button "tr4" After, Same, 20, 1.5 prompt:StageName[4]  do cur_stage = 4  Runmacro("run stages") enditem
 
 // mode split button "bmp\\planmatrix.bmp"
     button 1, After icons: "bmp\\planmodesplit.bmp", "bmp\\planmodesplit.bmp" do cur_stage = 5  Runmacro("set steps") enditem
-    button "tr5" After, Same, 20, 2 prompt:StageName[5]  do cur_stage = 5  Runmacro("run stages") enditem
+    button "tr5" After, Same, 20, 1.5 prompt:StageName[5]  do cur_stage = 5  Runmacro("run stages") enditem
 
 // commercial vehicles button
     button 1, After icons: uiDir + "bmp\\truck41.bmp", "bmp\\truck41.bmp" do cur_stage = 6  Runmacro("set steps") enditem
-    button "tr6" After, Same, 20, 2 prompt:StageName[6]  do cur_stage = 6  Runmacro("run stages") enditem
+    button "tr6" After, Same, 20, 1.5 prompt:StageName[6]  do cur_stage = 6  Runmacro("run stages") enditem
 
 // external trips button
     button 1, After icons: "bmp\\plantripdist.bmp", "bmp\\plantripdist.bmp" do cur_stage = 7  Runmacro("set steps") enditem
-    button "tr7" After, Same, 20, 2 prompt:StageName[7]  do cur_stage = 7  Runmacro("run stages") enditem
+    button "tr7" After, Same, 20, 1.5 prompt:StageName[7]  do cur_stage = 7  Runmacro("run stages") enditem
 
 // time of day button
     button 1, After icons: "bmp\\feedback1.bmp", "bmp\\feedback1.bmp" do cur_stage = 8  Runmacro("set steps") enditem
-    button "tr8" After, Same, 20, 2  prompt:StageName[8]  do cur_stage = 8  Runmacro("run stages") enditem
+    button "tr8" After, Same, 20, 1.5  prompt:StageName[8]  do cur_stage = 8  Runmacro("run stages") enditem
 
 // traffic assignment button
     button 1, After icons: "bmp\\planassign.bmp", "bmp\\planassign.bmp" do cur_stage = 9  Runmacro("set steps") enditem
-    button "tr8" After, Same, 20, 2 prompt:"Traffic Assignment"  do cur_stage = 9  Runmacro("run stages") enditem
+    button "tr8" After, Same, 20, 1.5 prompt:"Traffic Assignment"  do cur_stage = 9  Runmacro("run stages") enditem
 
 // quit button
-    button     1, 40, 40, 1.6  prompt: "Quit"      do Runmacro("closing") enditem
+    button     1, 30.5, 40, 1.5  prompt: "Quit"      do Runmacro("closing") enditem
 
     text  35, After Variable: "ver 0" + i2s(prj_version)
 
