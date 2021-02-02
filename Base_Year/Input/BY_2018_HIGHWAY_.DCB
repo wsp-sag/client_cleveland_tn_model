@@ -1,0 +1,6 @@
+Cleveland 2000 Network
+16
+"ID",I,1,4,0,10,0,,"","",,"Sum",
+"ID:1",I,5,4,0,10,0,,"","",,"Blank",
+"Centroid",I,9,4,0,8,0,,"","Internal Zone  1=yes; 0=no",,"Blank",
+"External",I,13,4,0,8,0,,"","External Zone:  1=yes; 2=no",,"Blank",
